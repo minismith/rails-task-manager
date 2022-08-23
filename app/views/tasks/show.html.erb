@@ -3,9 +3,24 @@
 <p> <%= @task.details %> </p>
 
 <% if @task.completed %>
-  <p>This task is completed</p>
+  <p><i class="fa-regular fa-square-check"></i> This task is completed</p>
 <% else %>
-  <p>This task is not completed yet</p>
+  <p><i class="fa-regular fa-square"></i> This task is not completed yet</p>
 <% end %>
 
-<%= link_to 'Back to list', tasks_path  %>
+<%= link_to 'Edit task', edit_task_path, class: "link"  %>
+
+<br>
+<br>
+
+<%= link_to 'Delete task',
+    task_path(@task),
+    data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'},
+    class: "link"
+%>
+
+<br>
+<br>
+
+
+<%= link_to 'Back to list', tasks_path, class: "link"  %>
